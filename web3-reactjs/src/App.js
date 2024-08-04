@@ -24,6 +24,12 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    window.ethereum.on("accountsChanged", () => {
+      window.location.reload();
+    });
+  }, []);
+
   const connectWallet = async () => {
     if (provider) {
       const accounts = await provider.send("eth_requestAccounts", []);
@@ -43,13 +49,27 @@ function App() {
   console.log("account :>> ", account);
 
   const sendTransaction = async () => {
-    console.log("receiver :>> ", typeof receiver);
     if (contract && account) {
       try {
-        console.log("Sending transaction...");
+        console.log("Receiver:", receiver); // Debugging receiver address
+        console.log("Amount (ETH):", amount); // Debugging amount
+
+        // Check if the receiver address is valid
+        if (!ethers.isAddress(receiver)) {
+          alert("Invalid receiver address");
+          return;
+        }
+
+        // Check if the receiver address is not the same as the sender's address
+        if (receiver.toLowerCase() === account.toLowerCase()) {
+          alert("Receiver address cannot be the same as sender address");
+          return;
+        }
+
         const tx = await contract.sendTransaction(receiver, {
           value: ethers.parseEther(amount),
         });
+
         await tx.wait();
         alert("Transaction successful");
         loadTransactions();

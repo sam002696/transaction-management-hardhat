@@ -3,14 +3,14 @@ async function main() {
   //   console.log("deployer :>> ", deployer);
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const balance = await deployer.getBalance();
-  console.log("Account balance:", ethers.utils.formatEther(balance));
+  // const balance = await deployer.getBalance();
+  // console.log("Account balance:", ethers.formatEther(balance));
 
   const TransactionManager = await ethers.getContractFactory(
     "TransactionManager"
   );
-  const transactionManager = await TransactionManager.deploy();
-  console.log("TransactionManager deployed to:", transactionManager.address);
+  // const transactionManager = await TransactionManager.deploy();
+  // console.log("TransactionManager deployed to:", transactionManager.address);
 }
 
 main()
