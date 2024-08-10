@@ -1,16 +1,14 @@
+const hre = require("hardhat");
+
 async function main() {
-  const [deployer] = await ethers.getSigners();
-  //   console.log("deployer :>> ", deployer);
-  console.log("Deploying contracts with the account:", deployer.address);
-
-  // const balance = await deployer.getBalance();
-  // console.log("Account balance:", ethers.formatEther(balance));
-
-  const TransactionManager = await ethers.getContractFactory(
+  const TransactionManager = await hre.ethers.getContractFactory(
     "TransactionManager"
   );
-  // const transactionManager = await TransactionManager.deploy();
-  // console.log("TransactionManager deployed to:", transactionManager.address);
+  const transactionManager = await TransactionManager.deploy();
+
+  await transactionManager.getDeployedCode();
+
+  console.log("TransactionManager deployed to:", transactionManager.target);
 }
 
 main()

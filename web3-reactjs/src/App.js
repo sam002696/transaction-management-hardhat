@@ -82,16 +82,27 @@ function App() {
 
   const loadTransactions = async () => {
     if (contract && account) {
+      console.log("loading transactions");
       try {
-        const txs = await contract.getTransactions(account);
+        // Convert the account address to a checksummed address
+        const checksummedAccount = ethers.getAddress(account);
+        console.log("account loaded", checksummedAccount);
+
+        // Fetch transactions using the checksummed account address
+        const txs = await contract.getTransactions(checksummedAccount);
         console.log("txs :>> ", txs);
-        if (Array.isArray(txs)) {
+
+        if (Array.isArray(txs) && txs.length > 0) {
           setTransactions(txs);
+        } else if (Array.isArray(txs) && txs.length === 0) {
+          console.log("No transactions found.");
+          setTransactions([]);
         } else {
           console.error("Unexpected response format:", txs);
         }
       } catch (error) {
         console.error("Error loading transactions:", error);
+        alert("Error loading transactions: " + error.message);
       }
     }
   };

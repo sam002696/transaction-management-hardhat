@@ -41,7 +41,6 @@ contract TransactionManager {
         view
         returns (Transaction[] memory)
     {
-        Transaction[] memory transactions = userTransactions[user];
-        return transactions;
+        return userTransactions[user];
     }
 }
