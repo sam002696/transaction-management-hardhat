@@ -4,6 +4,11 @@ import Header from "../layout/header/Header";
 import ethTransaction from "../images/ethTransaction.png";
 import TransactionHistory from "./TransactionHistory";
 
+// ERC20 ABI (Application Binary Interface)
+const ERC20_ABI = [
+  "function transfer(address to, uint amount) public returns (bool)",
+];
+
 export default function TransactionERC() {
   const [provider, setProvider] = useState();
 
@@ -26,10 +31,23 @@ export default function TransactionERC() {
     console.log("amount :>> ", amount);
 
     const signer = await provider.getSigner();
-    const tx = await signer.sendTransaction({
-      to: walletAddress,
-      value: ethers.parseUnits(amount, "ether"),
-    });
+
+    // Replace with your token's contract address
+    const tokenAddress = "0x280020Fdc5B692BD889544Ad66E3dC47786D0D26";
+
+    // Create a contract instance
+    const tokenContract = new ethers.Contract(tokenAddress, ERC20_ABI, signer);
+
+    // Convert amount to the token's decimals (assuming 18 decimals)
+    const tx = await tokenContract.transfer(
+      walletAddress,
+      ethers.parseUnits(amount, 18)
+    );
+
+    // const tx = await signer.sendTransaction({
+    //   to: walletAddress,
+    //   value: ethers.parseUnits(amount, "ether"),
+    // });
     console.log(tx);
   };
 

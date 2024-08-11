@@ -1,9 +1,7 @@
 class AuthUserHelper {
   getUserWalletAddress() {
-    const walletAddress = localStorage.getItem("wallet_address")
-      ? JSON.parse(localStorage.getItem("wallet_address"))
-      : "";
-    return walletAddress || "";
+    const walletAddress = localStorage.getItem("wallet_address");
+    return walletAddress ? walletAddress : "";
   }
 
   getProvider() {
@@ -11,3 +9,5 @@ class AuthUserHelper {
     return signer || [];
   }
 }
+
+export const AuthUser = new AuthUserHelper();

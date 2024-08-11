@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { AuthUser } from "../utils/AuthUser";
+import MyEtherscanProvider from "../utils/MyEtherscanProvider";
+
 const statuses = {
   Completed: "text-green-400 bg-green-400/10",
   Error: "text-rose-400 bg-rose-400/10",
@@ -114,13 +118,29 @@ function classNames(...classes) {
 }
 
 export default function TransactionHistory() {
+  const [transactions, setTransactions] = useState([]);
+
+  const loadTransactions = async () => {
+    const myEtherScanInstance = new MyEtherscanProvider(
+      "sepolia",
+      "3F3C3WXW84FFPQNJ1AJBSSS7T48AXIFS1I"
+    );
+    myEtherScanInstance
+      .getHistory(AuthUser.getUserWalletAddress())
+      .then(setTransactions)
+      .catch(console.error);
+  };
+
+  console.log("transactions :>> ", transactions);
+
   return (
     <div className="bg-gray-900 py-10">
       <div className="flex flex-row justify-between items-center">
         <h2 className="px-4 text-base font-semibold leading-7 text-white sm:px-6 lg:px-8">
-          Latest activity
+          Transactions List
         </h2>
         <button
+          onClick={loadTransactions}
           type="button"
           className="rounded-md bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-white/20 sm:px-6 lg:px-8 mr-4"
         >
@@ -130,9 +150,13 @@ export default function TransactionHistory() {
 
       <table className="mt-6 w-full whitespace-nowrap text-left">
         <colgroup>
-          <col className="w-full sm:w-4/12" />
-          <col className="lg:w-4/12" />
+          <col className="w-full sm:w-2/12" />
           <col className="lg:w-2/12" />
+          <col className="lg:w-2/12" />
+          <col className="lg:w-2/12" />
+          <col className="lg:w-1/12" />
+          <col className="lg:w-1/12" />
+          <col className="lg:w-1/12" />
           <col className="lg:w-1/12" />
           <col className="lg:w-1/12" />
         </colgroup>
@@ -142,88 +166,128 @@ export default function TransactionHistory() {
               scope="col"
               className="py-2 pl-4 pr-8 font-semibold sm:pl-6 lg:pl-8"
             >
-              User
+              Hash
             </th>
             <th
               scope="col"
               className="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell"
             >
-              Commit
+              From
             </th>
             <th
               scope="col"
               className="py-2 pl-0 pr-4 text-right font-semibold sm:pr-8 sm:text-left lg:pr-20"
             >
-              Status
+              To
             </th>
             <th
               scope="col"
               className="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20"
             >
-              Duration
+              Value
             </th>
             <th
               scope="col"
               className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
             >
-              Deployed at
+              Transaction Receipt Status
+            </th>
+            <th
+              scope="col"
+              className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
+            >
+              Gas Used
+            </th>
+            <th
+              scope="col"
+              className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
+            >
+              Status
+            </th>
+            <th
+              scope="col"
+              className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
+            >
+              Timestamp
             </th>
           </tr>
         </thead>
         <tbody className="divide-y divide-white/5">
-          {activityItems.map((item) => (
-            <tr key={item.commit}>
-              <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
-                <div className="flex items-center gap-x-4">
-                  <img
-                    alt=""
-                    src={item.user.imageUrl}
-                    className="h-8 w-8 rounded-full bg-gray-800"
-                  />
-                  <div className="truncate text-sm font-medium leading-6 text-white">
-                    {item.user.name}
+          {transactions &&
+            transactions.length !== 0 &&
+            transactions.map((transaction) => (
+              <tr key={transaction.hash}>
+                <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
+                  <div className="flex items-center gap-x-4">
+                    <img
+                      alt=""
+                      src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      className="h-8 w-8 rounded-full bg-gray-800"
+                    />
+                    <div className="truncate text-sm font-medium leading-6 text-white">
+                      {transaction.hash}
+                    </div>
                   </div>
-                </div>
-              </td>
-              <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-                <div className="flex gap-x-3">
-                  <div className="font-mono text-sm leading-6 text-gray-400">
-                    {item.commit}
+                </td>
+                <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
+                  <div className="flex gap-x-3">
+                    <div className="font-mono text-sm leading-6 text-gray-400">
+                      {transaction.from}
+                    </div>
+                    {/* <div className="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
+                    {transaction.to}
+                  </div> */}
                   </div>
-                  <div className="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
-                    {item.branch}
+                </td>
+                <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
+                  <div className="flex gap-x-3">
+                    <div className="font-mono text-sm leading-6 text-gray-400">
+                      {transaction.to}
+                    </div>
+                    {/* <div className="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
+                    {transaction.to}
+                  </div> */}
                   </div>
-                </div>
-              </td>
-              <td className="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
-                <div className="flex items-center justify-end gap-x-2 sm:justify-start">
-                  <time
-                    dateTime={item.dateTime}
-                    className="text-gray-400 sm:hidden"
-                  >
-                    {item.date}
-                  </time>
-                  <div
-                    className={classNames(
-                      statuses[item.status],
-                      "flex-none rounded-full p-1"
-                    )}
-                  >
-                    <div className="h-1.5 w-1.5 rounded-full bg-current" />
+                </td>
+                <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
+                  <div className="flex gap-x-3">
+                    <div className="font-mono text-sm leading-6 text-gray-400">
+                      {transaction.value}
+                    </div>
+                    {/* <div className="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
+                    {transaction.to}
+                  </div> */}
                   </div>
-                  <div className="hidden text-white sm:block">
-                    {item.status}
+                </td>
+                <td className="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
+                  <div className="flex items-center justify-end gap-x-2 sm:justify-start">
+                    <time
+                      dateTime={transaction.dateTime}
+                      className="text-gray-400 sm:hidden"
+                    >
+                      {transaction.date}
+                    </time>
+                    {/* <div
+                      className={classNames(
+                        statuses[item.status],
+                        "flex-none rounded-full p-1"
+                      )}
+                    >
+                      <div className="h-1.5 w-1.5 rounded-full bg-current" />
+                    </div> */}
+                    <div className="hidden text-white sm:block">
+                      {transaction.status}
+                    </div>
                   </div>
-                </div>
-              </td>
-              <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
-                {item.duration}
-              </td>
-              <td className="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
-                <time dateTime={item.dateTime}>{item.date}</time>
-              </td>
-            </tr>
-          ))}
+                </td>
+                <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
+                  {transaction.duration}
+                </td>
+                <td className="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
+                  {/* <time dateTime={transaction.dateTime}>{item.date}</time> */}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

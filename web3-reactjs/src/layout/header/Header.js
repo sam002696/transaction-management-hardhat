@@ -101,7 +101,11 @@ export default function Header() {
           <div className="flex items-center">
             <a href="#">
               <span className="sr-only">Your Company</span>
-              <img alt="" src={ethIcon} className="h-12 w-auto" />
+              <img
+                alt=""
+                src={ethIcon}
+                className="h-16 object-contain w-auto"
+              />
             </a>
             <div className="ml-10 hidden space-x-8 lg:block">
               {navigation.map((link) => (
