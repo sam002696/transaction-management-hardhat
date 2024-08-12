@@ -77,7 +77,7 @@ export default function TransactionERC() {
           <div className="relative isolate px-6 py-24 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-xl lg:max-w-4xl">
               <h2 className="text-5xl font-bold tracking-tight text-white">
-                Let’s transact ETH
+                Let’s transact ERC20 Standard EATL Token
               </h2>
               <p className="mt-2 text-lg leading-8 text-gray-100">
                 Experience a clean and straightforward interface that simplifies
@@ -91,7 +91,7 @@ export default function TransactionERC() {
                         htmlFor="wallet_address"
                         className="block text-lg font-semibold leading-6 text-gray-100"
                       >
-                        Wallet Address
+                        Enter Receiver's Wallet Address
                       </label>
                       <div className="mt-2.5">
                         <input
@@ -112,14 +112,14 @@ export default function TransactionERC() {
                         htmlFor="last-name"
                         className="block text-lg font-semibold leading-6 text-gray-100"
                       >
-                        Amount
+                        Enter Token Amount
                       </label>
                       <div className="mt-2.5">
                         <input
                           id="amount"
                           name="amount"
-                          type="text"
-                          placeholder="1 ETH/TOKEN"
+                          type="number"
+                          placeholder="10 EATL TOKEN"
                           value={amount}
                           onChange={(e) => setAmount(e.target.value)}
                           className="block w-full rounded-lg border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -132,16 +132,13 @@ export default function TransactionERC() {
                         type="submit"
                         className="block w-full rounded-lg bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
-                        SEND
+                        SEND TOKEN TO RECEIVER'S ADDRESS
                       </button>
                     </div>
                   </div>
 
                   <p className="mt-4 text-sm leading-6 text-gray-500">
-                    By submitting this form, I agree to the{" "}
-                    <a href="#" className="font-semibold text-indigo-600">
-                      privacy&nbsp;policy
-                    </a>
+                    By submitting this form, I agree to the transfer policy of EATL Token (ERC20 Standard){" "}
                     .
                   </p>
                 </div>
