@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import Header from "../layout/header/Header";
 import ethTransaction from "../images/ethTransaction.png";
 import TransactionHistory from "./TransactionHistory";
+import ToastAlert from "../notification/alert/ToastAlert";
 
 // ERC20 ABI (Application Binary Interface)
 const ERC20_ABI = [
@@ -25,30 +26,63 @@ export default function TransactionERC() {
 
   const [walletAddress, setWalletAddress] = useState("");
   const [amount, setAmount] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const sendTransaction = async () => {
+    setLoading(true);
     console.log("walletAddress :>> ", walletAddress);
     console.log("amount :>> ", amount);
 
-    const signer = await provider.getSigner();
+    try {
+      const signer = await provider.getSigner();
 
-    // Replace with your token's contract address
-    const tokenAddress = "0x280020Fdc5B692BD889544Ad66E3dC47786D0D26";
+      // Replace with your token's contract address
+      const tokenAddress = "0x280020Fdc5B692BD889544Ad66E3dC47786D0D26";
 
-    // Create a contract instance
-    const tokenContract = new ethers.Contract(tokenAddress, ERC20_ABI, signer);
+      // Create a contract instance
+      const tokenContract = new ethers.Contract(tokenAddress, ERC20_ABI, signer);
 
-    // Convert amount to the token's decimals (assuming 18 decimals)
-    const tx = await tokenContract.transfer(
-      walletAddress,
-      ethers.parseUnits(amount, 18)
-    );
+      const transferToken = await tokenContract.transfer(
+        walletAddress,
+        ethers.parseUnits(amount, 18)
+      );
 
-    // const tx = await signer.sendTransaction({
-    //   to: walletAddress,
-    //   value: ethers.parseUnits(amount, "ether"),
-    // });
-    console.log(tx);
+      // Convert amount to the token's decimals (assuming 18 decimals)
+      const tx = await transferToken.wait();
+
+      // const tx = await signer.sendTransaction({
+      //   to: walletAddress,
+      //   value: ethers.parseUnits(amount, "ether"),
+      // });
+      console.log(tx);
+      if (tx.status === 1) {
+        setLoading(false);
+        ToastAlert("success", "EATL Token Transfer Successful!");
+        // setTransactionData(resp.hash);
+      } else {
+        setLoading(false);
+        ToastAlert("error", "Transaction failed after waiting for receipt");
+      }
+
+    }catch (err) {
+      setLoading(false);
+      console.log(err);
+      if (err.code === "ACTION_REJECTED") {
+        ToastAlert("warn", "Transaction was rejected by the user.");
+      } else if (
+        err.reason ===
+        "Insufficient time elapsed since last withdrawal - try again later."
+      ) {
+        ToastAlert(
+          "error",
+          "Insufficient time elapsed since last withdrawal - try again later."
+        );
+      } else if (err.receipt?.status === 0) {
+        ToastAlert("error", "Transaction failed during request");
+      }
+    }
+
+    
   };
 
   return (
@@ -128,11 +162,15 @@ export default function TransactionERC() {
                     </div>
                     <div className="mt-8">
                       <button
+                        disabled={loading}
                         onClick={sendTransaction}
                         type="submit"
                         className="block w-full rounded-lg bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
-                        SEND TOKEN TO RECEIVER'S ADDRESS
+                        {loading
+                          ? "Sending your tokens. Please wait..."
+                          : "SEND TOKEN TO RECEIVER'S ADDRESS"}
+                        
                       </button>
                     </div>
                   </div>
