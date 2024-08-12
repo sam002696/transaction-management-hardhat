@@ -86,10 +86,10 @@ const TokenRequest = () => {
           <div className="relative isolate px-6 py-24 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-xl lg:max-w-4xl">
               <h2 className="text-5xl font-bold tracking-tight text-white">
-                EATL Faucet
+                EATL Token delivered straight to your wallet.
               </h2>
               <p className="mt-2 text-lg leading-8 text-gray-100">
-                Fast and reliable. 50 EATL/day.
+                Fast and reliable ERC20 Standard Token. 50 EATL/request.
               </p>
               <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
                 <div className="lg:flex-auto">
@@ -99,7 +99,7 @@ const TokenRequest = () => {
                         htmlFor="wallet_address"
                         className="block text-lg font-semibold leading-6 text-gray-100"
                       >
-                        Wallet Address
+                        My Wallet Address
                       </label>
                       <div className="mt-2.5">
                         <input
