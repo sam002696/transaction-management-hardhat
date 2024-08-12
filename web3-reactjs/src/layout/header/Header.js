@@ -77,6 +77,7 @@ export default function Header() {
       window.ethereum.on("accountsChanged", (accounts) => {
         setWalletAddress(accounts[0]);
         localStorage.setItem("wallet_address", walletAddress);
+        window.location.reload();
       });
     } else {
       /* MetaMask is not installed */
@@ -121,7 +122,7 @@ export default function Header() {
           </div>
           <div className="ml-10 space-x-4">
             <Link
-              to="/faucet"
+              to="/token-request"
               className="inline-block rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white hover:bg-opacity-75"
             >
               Token Request
