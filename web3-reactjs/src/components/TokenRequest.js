@@ -60,8 +60,6 @@ const TokenRequest = () => {
     }
   };
 
-  console.log("transactionData :>> ", transactionData);
-
   return (
     <>
       <Header />
@@ -109,8 +107,9 @@ const TokenRequest = () => {
                           name="walletAddress"
                           type="text"
                           placeholder="Enter your wallet address (0x...)"
-                          value={AuthUser.getUserWalletAddress()}
-                          className="block w-full rounded-lg border-0 px-3.5 py-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 placeholder:text-lg placeholder:leading-3"
+                          defaultValue={AuthUser.getUserWalletAddress()}
+                          disabled={true}
+                          className="block w-full rounded-md border-0 px-3.5 py-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  placeholder:leading-3 bg-indigo-200 opacity-70 font-semibold"
                         />
                       </div>
                     </div>
