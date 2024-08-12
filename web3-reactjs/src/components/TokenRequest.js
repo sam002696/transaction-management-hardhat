@@ -31,7 +31,7 @@ const TokenRequest = () => {
       const faucetContractProvider = FaucetContract(provider);
       const fcContractWithSigner = faucetContractProvider.connect(signer);
       const resp = await fcContractWithSigner.requestTokens();
-      const receipt = await resp.wait(); // Wait for the transaction to be mined
+      const receipt = await resp.wait();
 
       if (receipt.status === 1) {
         setLoading(false);
@@ -109,7 +109,7 @@ const TokenRequest = () => {
                           placeholder="Enter your wallet address (0x...)"
                           defaultValue={AuthUser.getUserWalletAddress()}
                           disabled={true}
-                          className="block w-full rounded-md border-0 px-3.5 py-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  placeholder:leading-3 bg-indigo-200 opacity-70 font-semibold"
+                          className="block w-full rounded-md border-0 px-3.5 py-6 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6  placeholder:leading-3 bg-indigo-200 opacity-70 font-semibold shadow-lg shadow-purple-500/50"
                         />
                       </div>
                     </div>
@@ -118,7 +118,7 @@ const TokenRequest = () => {
                         disabled={loading}
                         onClick={getEATLHandler}
                         type="submit"
-                        className="block w-full rounded-lg bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                        className="block w-full rounded-lg bg-cyan-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white  hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600 disabled:bg-gray-400 disabled:cursor-not-allowed opacity-90 shadow-md shadow-emerald-500/40"
                       >
                         {loading
                           ? "Processing your tokens. Please wait..."
@@ -158,14 +158,6 @@ const TokenRequest = () => {
                       </>
                     )}
                   </div>
-
-                  <p className="mt-4 text-sm leading-6 text-gray-500">
-                    By submitting this form, I agree to the{" "}
-                    <a href="#" className="font-semibold text-indigo-600">
-                      privacy&nbsp;policy
-                    </a>
-                    .
-                  </p>
                 </div>
               </div>
             </div>

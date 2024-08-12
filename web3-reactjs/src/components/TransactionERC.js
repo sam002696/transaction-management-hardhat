@@ -101,7 +101,7 @@ export default function TransactionERC() {
                           placeholder="Enter your wallet address (0x...)"
                           value={walletAddress}
                           onChange={(e) => setWalletAddress(e.target.value)}
-                          className="block w-full rounded-lg border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-lg border-0 px-3.5 py-2  shadow-md ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-indigo-200 opacity-70 placeholder:text-gray-700 text-gray-700 shadow-indigo-500/50 font-semibold"
                         />
                       </div>
                     </div>
@@ -122,7 +122,7 @@ export default function TransactionERC() {
                           placeholder="10 EATL TOKEN"
                           value={amount}
                           onChange={(e) => setAmount(e.target.value)}
-                          className="block w-full rounded-lg border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-lg border-0 px-3.5 py-2 shadow-md ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-indigo-200 opacity-70 placeholder:text-gray-700 text-gray-700 shadow-indigo-500/50 font-semibold"
                         />
                       </div>
                     </div>
@@ -130,7 +130,7 @@ export default function TransactionERC() {
                       <button
                         onClick={sendTransaction}
                         type="submit"
-                        className="block w-full rounded-lg bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="block w-full rounded-lg bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 opacity-90 shadow-indigo-500/50"
                       >
                         SEND TOKEN TO RECEIVER'S ADDRESS
                       </button>
@@ -138,8 +138,8 @@ export default function TransactionERC() {
                   </div>
 
                   <p className="mt-4 text-sm leading-6 text-gray-500">
-                    By submitting this form, I agree to the transfer policy of EATL Token (ERC20 Standard){" "}
-                    .
+                    By submitting this form, I agree to the transfer policy of
+                    EATL Token (ERC20 Standard) .
                   </p>
                 </div>
               </div>
