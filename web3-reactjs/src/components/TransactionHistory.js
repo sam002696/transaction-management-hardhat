@@ -1,117 +1,14 @@
 import { useState } from "react";
 import { AuthUser } from "../utils/AuthUser";
 import MyEtherscanProvider from "../utils/MyEtherscanProvider";
+import { ethers } from "ethers";
+import { InformationCircleIcon } from '@heroicons/react/20/solid'
+
 
 const statuses = {
-  Completed: "text-green-400 bg-green-400/10",
-  Error: "text-rose-400 bg-rose-400/10",
+  1: "text-green-400 bg-green-400/10",
+  0: "text-rose-400 bg-rose-400/10",
 };
-const activityItems = [
-  {
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "2d89f0c8",
-    branch: "main",
-    status: "Completed",
-    duration: "25s",
-    date: "45 minutes ago",
-    dateTime: "2023-01-23T11:00",
-  },
-  {
-    user: {
-      name: "Lindsay Walton",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "249df660",
-    branch: "main",
-    status: "Completed",
-    duration: "1m 32s",
-    date: "3 hours ago",
-    dateTime: "2023-01-23T09:00",
-  },
-  {
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "11464223",
-    branch: "main",
-    status: "Error",
-    duration: "1m 4s",
-    date: "12 hours ago",
-    dateTime: "2023-01-23T00:00",
-  },
-  {
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "dad28e95",
-    branch: "main",
-    status: "Completed",
-    duration: "2m 15s",
-    date: "2 days ago",
-    dateTime: "2023-01-21T13:00",
-  },
-  {
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "624bc94c",
-    branch: "main",
-    status: "Completed",
-    duration: "1m 12s",
-    date: "5 days ago",
-    dateTime: "2023-01-18T12:34",
-  },
-  {
-    user: {
-      name: "Courtney Henry",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "e111f80e",
-    branch: "main",
-    status: "Completed",
-    duration: "1m 56s",
-    date: "1 week ago",
-    dateTime: "2023-01-16T15:54",
-  },
-  {
-    user: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "5e136005",
-    branch: "main",
-    status: "Completed",
-    duration: "3m 45s",
-    date: "1 week ago",
-    dateTime: "2023-01-16T11:31",
-  },
-  {
-    user: {
-      name: "Whitney Francis",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    commit: "5c1fd07f",
-    branch: "main",
-    status: "Completed",
-    duration: "37s",
-    date: "2 weeks ago",
-    dateTime: "2023-01-09T08:45",
-  },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -136,8 +33,8 @@ export default function TransactionHistory() {
   return (
     <div className="bg-gray-900 py-10">
       <div className="flex flex-row justify-between items-center">
-        <h2 className="px-4 text-base font-semibold leading-7 text-white sm:px-6 lg:px-8">
-          Transactions List
+        <h2 className="px-4 text-lg font-semibold leading-7 text-white sm:px-6 lg:px-8">
+          Transactions List for the connected wallet
         </h2>
         <button
           onClick={loadTransactions}
@@ -148,10 +45,10 @@ export default function TransactionHistory() {
         </button>
       </div>
 
+      {transactions && transactions.length > 0 ?
       <table className="mt-6 w-full whitespace-nowrap text-left">
         <colgroup>
           <col className="w-full sm:w-2/12" />
-          <col className="lg:w-2/12" />
           <col className="lg:w-2/12" />
           <col className="lg:w-2/12" />
           <col className="lg:w-1/12" />
@@ -186,28 +83,16 @@ export default function TransactionHistory() {
             >
               Value
             </th>
-            <th
-              scope="col"
-              className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
-            >
-              Transaction Receipt Status
+            <th scope="col" className="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">
+              Txreceipt_Status
             </th>
-            <th
-              scope="col"
-              className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
-            >
+            <th scope="col" className="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">
               Gas Used
             </th>
-            <th
-              scope="col"
-              className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
-            >
-              Status
+            <th scope="col" className="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">
+              Block No
             </th>
-            <th
-              scope="col"
-              className="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
-            >
+            <th scope="col" className="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">
               Timestamp
             </th>
           </tr>
@@ -215,81 +100,103 @@ export default function TransactionHistory() {
         <tbody className="divide-y divide-white/5">
           {transactions &&
             transactions.length !== 0 &&
-            transactions.map((transaction) => (
+            transactions
+            .sort((a, b) => b.timeStamp - a.timeStamp)
+            .map((transaction) => (
               <tr key={transaction.hash}>
                 <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
                   <div className="flex items-center gap-x-4">
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      className="h-8 w-8 rounded-full bg-gray-800"
-                    />
                     <div className="truncate text-sm font-medium leading-6 text-white">
-                      {transaction.hash}
-                    </div>
-                  </div>
-                </td>
-                <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-                  <div className="flex gap-x-3">
-                    <div className="font-mono text-sm leading-6 text-gray-400">
-                      {transaction.from}
-                    </div>
-                    {/* <div className="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
-                    {transaction.to}
-                  </div> */}
-                  </div>
-                </td>
-                <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-                  <div className="flex gap-x-3">
-                    <div className="font-mono text-sm leading-6 text-gray-400">
-                      {transaction.to}
-                    </div>
-                    {/* <div className="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
-                    {transaction.to}
-                  </div> */}
-                  </div>
-                </td>
-                <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-                  <div className="flex gap-x-3">
-                    <div className="font-mono text-sm leading-6 text-gray-400">
-                      {transaction.value}
-                    </div>
-                    {/* <div className="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
-                    {transaction.to}
-                  </div> */}
-                  </div>
-                </td>
-                <td className="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
-                  <div className="flex items-center justify-end gap-x-2 sm:justify-start">
-                    <time
-                      dateTime={transaction.dateTime}
-                      className="text-gray-400 sm:hidden"
-                    >
-                      {transaction.date}
-                    </time>
-                    {/* <div
-                      className={classNames(
-                        statuses[item.status],
-                        "flex-none rounded-full p-1"
-                      )}
-                    >
-                      <div className="h-1.5 w-1.5 rounded-full bg-current" />
-                    </div> */}
-                    <div className="hidden text-white sm:block">
-                      {transaction.status}
+                      {transaction.hash && transaction.hash.substring(
+                        0,
+                        4
+                      )}...{transaction.hash.substring(56)}
                     </div>
                   </div>
                 </td>
                 <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
-                  {transaction.duration}
+                    {transaction.from && transaction.from.substring(0,6)}...{transaction.from.substring(34)}
                 </td>
-                <td className="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
-                  {/* <time dateTime={transaction.dateTime}>{item.date}</time> */}
+                <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
+                    {transaction.to && transaction.to.substring(0,6)}...{transaction.to.substring(34)}
                 </td>
+                <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
+                  <div className="flex gap-x-3">
+                    <div className="font-mono text-sm leading-6 text-gray-400">
+                      {/* {ethers.formatEther(transaction.value)} */}
+                      {Number(ethers.formatEther(transaction.value)).toFixed(8)}
+
+                    </div>
+                    <div className="rounded-md bg-gray-700/40 px-1 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
+                      ETH
+                    </div>
+                  </div>
+                </td>
+                <td className="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
+                  <div className="flex items-center justify-end gap-x-2 sm:justify-start">
+                    {/* <time dateTime={item.dateTime} className="text-gray-400 sm:hidden">
+                      {item.date}
+                    </time> */}
+                    <div className={classNames(statuses[transaction.txreceipt_status], 'flex-none rounded-full p-1')}>
+                      <div className="h-1.5 w-1.5 rounded-full bg-current" />
+                    </div>
+                    <div className="hidden text-white sm:block">{transaction.txreceipt_status && transaction.txreceipt_status === "0" ? "Failed" : "Success" }</div>
+                  </div>
+                </td>
+                <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
+                  {transaction.gasUsed}
+                </td>
+                <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
+                  {transaction.blockNumber}
+                </td>
+                <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
+                    {new Intl.DateTimeFormat('en-CA', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: false,
+                    }).format(new Date(transaction.timeStamp * 1000)).replace(',', '/').replace(' ', '')}
+                </td>
+                
               </tr>
             ))}
+            {
+              transactions?.length === 0 && <>
+                <tr>
+                  <td
+                    colSpan="8"
+                    className="text-center py-6 text-lg font-medium text-gray-400"
+                  >
+                    NO DATA FOUND
+                  </td>
+                </tr>
+              </>
+            }
         </tbody>
       </table>
+      :
+      <>
+        <div className="rounded-md bg-blue-50 p-4 mx-auto max-w-6xl mt-8">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <InformationCircleIcon aria-hidden="true" className="h-5 w-5 text-blue-400" />
+            </div>
+            <div className="ml-3 flex-1 md:flex md:justify-between">
+              <p className="text-sm text-blue-700">Please click on the Load Transactions Button to see the Transactions List</p>
+              {/* <p className="mt-3 text-sm md:ml-6 md:mt-0">
+                <a href="#" className="whitespace-nowrap font-medium text-blue-700 hover:text-blue-600">
+                  Details
+                  <span aria-hidden="true"> &rarr;</span>
+                </a>
+              </p> */}
+            </div>
+          </div>
+        </div>
+      </>
+      }
+
     </div>
   );
 }
