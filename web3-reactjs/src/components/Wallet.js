@@ -5,7 +5,7 @@ import ethBg from "../images/ethBg.png";
 export default function Wallet() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="bg-gray-900">
         <div className="relative isolate overflow-hidden pt-14">
           <img
@@ -40,7 +40,8 @@ export default function Wallet() {
                 Your Gateway to Effortless EATL Token Management
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-300">
-                Secure, Fast, and Reliable ERC20 Standard Token Transactions at Your Fingertips
+                Secure, Fast, and Reliable ERC20 Standard Token Transactions at
+                Your Fingertips
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a

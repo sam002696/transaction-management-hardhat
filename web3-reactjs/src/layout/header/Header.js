@@ -8,6 +8,7 @@ import walletIcon from "../../images/wallet.png";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Transfer token", href: "/transaction" },
+  { name: "How it works?", href: "/how-it-works" },
   //   { name: "Docs", href: "#" },
   //   { name: "Company", href: "#" },
 ];
@@ -92,7 +93,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-indigo-700">
+    <header className="bg-indigo-900">
       <nav aria-label="Top" className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex w-full items-center justify-between border-b border-indigo-500 py-2 lg:border-none">
           <div className="flex items-center">
@@ -121,9 +122,9 @@ export default function Header() {
               <button
                 onClick={handleTokenRedirect}
                 // to="/token-request"
-                className=" rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm text-white hover:bg-opacity-75 font-semibold flex flex-row items-center"
+                className=" rounded-md border border-transparent bg-indigo-500 px-2 py-2  text-white hover:bg-opacity-75 font-semibold flex flex-row items-center"
               >
-                <span className="mr-2">GET EATL TOKEN </span>{" "}
+                <span className="mr-2 text-sm">GET EATL TOKEN </span>{" "}
                 <img
                   src={cryptoIcon}
                   alt=""
@@ -134,20 +135,26 @@ export default function Header() {
 
             <button
               onClick={connectWallet}
-              className="rounded-md border border-transparent bg-white px-4 py-2 text-base font-semibold text-indigo-600 hover:bg-indigo-50 flex flex-row items-center"
+              className="rounded-md border border-transparent bg-white px-2 py-2  font-semibold text-indigo-600 hover:bg-indigo-50 flex flex-row items-center"
             >
               {walletAddress && walletAddress.length > 0 && (
                 <img src={walletIcon} alt="" className="h-6 w-auto mr-2" />
               )}
-              <span className="is-link has-text-weight-bold">
+              <span className="is-link has-text-weight-bold text-sm">
                 {walletAddress && walletAddress.length > 0
-                  ? `Connected: ${walletAddress.substring(
+                  ? `CONNECTED : ${walletAddress.substring(
                       0,
                       6
                     )}...${walletAddress.substring(38)}`
-                  : "Connect Wallet"}
+                  : "CONNECT WALLET"}
               </span>
             </button>
+
+            <div className="">
+              <button className=" rounded-md border border-transparent bg-purple-800 px-3 py-2  text-white hover:bg-opacity-75 font-semibold flex flex-row items-center">
+                <span className=" text-sm">SIGN IN</span>{" "}
+              </button>
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-x-6 py-4 lg:hidden">

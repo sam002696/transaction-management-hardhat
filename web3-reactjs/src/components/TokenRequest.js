@@ -24,6 +24,10 @@ const TokenRequest = () => {
   }, []);
 
   const getEATLHandler = async () => {
+    if (!AuthUser.getUserWalletAddress()) {
+      ToastAlert("warning", "Connect your wallet first!");
+      return;
+    }
     setLoading(true);
     setTransactionData("");
     try {
@@ -62,7 +66,7 @@ const TokenRequest = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="bg-gray-900">
         <div className="relative isolate overflow-hidden pt-14">
           <img
@@ -89,24 +93,31 @@ const TokenRequest = () => {
                 EATL Token delivered straight to your wallet address.
               </h2>
               <p className="mt-2 text-lg leading-8 text-gray-100">
-                Fast and reliable ERC20 Standard Token. You will receive 50 EATL/request completely free.
+                Fast and reliable ERC20 Standard Token. You will receive 50
+                EATL/request completely free.
               </p>
               <div className="rounded-md bg-yellow-50 p-4 mt-8 mx-auto max-w-6xl opacity-70">
                 <div className="flex">
                   <div className="flex-shrink-0">
-                    <InformationCircleIcon aria-hidden="true" className="h-5 w-5 text-yellow-400" />
+                    <InformationCircleIcon
+                      aria-hidden="true"
+                      className="h-5 w-5 text-yellow-400"
+                    />
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-sm font-medium text-yellow-800">Token Address : 0x280020Fdc5B692BD889544Ad66E3dC47786D0D26</h3>
+                    <h3 className="text-sm font-medium text-yellow-800">
+                      Token Address : 0x280020Fdc5B692BD889544Ad66E3dC47786D0D26
+                    </h3>
                     <div className="mt-2 text-sm text-yellow-700">
                       <p>
-                      Import EATL Token to your Crypto Wallet form this above token contract Address.
+                        Import EATL Token to your Crypto Wallet form this above
+                        token contract Address.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-8 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
                 <div className="lg:flex-auto">
                   <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-1">
@@ -138,7 +149,7 @@ const TokenRequest = () => {
                       >
                         {loading
                           ? "Processing your tokens. Please wait..."
-                          : "GET TOKENS"}
+                          : "GET 50 EATL TOKENS"}
                       </button>
                     </div>
 

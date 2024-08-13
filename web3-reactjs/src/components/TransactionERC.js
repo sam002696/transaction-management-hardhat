@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import Header from "../layout/header/Header";
+// import Header from "../layout/header/Header";
 import ethTransaction from "../images/ethTransaction.png";
 import TransactionHistory from "./TransactionHistory";
 import ToastAlert from "../notification/alert/ToastAlert";
@@ -40,7 +40,11 @@ export default function TransactionERC() {
       const tokenAddress = "0x280020Fdc5B692BD889544Ad66E3dC47786D0D26";
 
       // Create a contract instance
-      const tokenContract = new ethers.Contract(tokenAddress, ERC20_ABI, signer);
+      const tokenContract = new ethers.Contract(
+        tokenAddress,
+        ERC20_ABI,
+        signer
+      );
 
       const transferToken = await tokenContract.transfer(
         walletAddress,
@@ -63,8 +67,7 @@ export default function TransactionERC() {
         setLoading(false);
         ToastAlert("error", "Transaction failed after waiting for receipt");
       }
-
-    }catch (err) {
+    } catch (err) {
       setLoading(false);
       console.log(err);
       if (err.code === "ACTION_REJECTED") {
@@ -81,13 +84,11 @@ export default function TransactionERC() {
         ToastAlert("error", "Transaction failed during request");
       }
     }
-
-    
   };
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="bg-gray-900">
         <div className="relative isolate overflow-hidden pt-14">
           <img
@@ -170,7 +171,6 @@ export default function TransactionERC() {
                         {loading
                           ? "Sending your tokens. Please wait..."
                           : "SEND TOKEN TO RECEIVER'S ADDRESS"}
-                        
                       </button>
                     </div>
                   </div>

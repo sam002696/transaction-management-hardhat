@@ -20,6 +20,10 @@ export default function TransactionHistory() {
   const [loading, setLoading] = useState(false);
 
   const viewTransactions = async () => {
+    if (!AuthUser.getUserWalletAddress()) {
+      ToastAlert("warning", "Connect your wallet first!");
+      return;
+    }
     try {
       setLoading(true);
 
@@ -43,7 +47,7 @@ export default function TransactionHistory() {
   };
 
   return (
-    <div className="bg-gray-900 py-10">
+    <div className="bg-slate-800 py-10">
       <div className="flex flex-row justify-between items-center">
         <h2 className="px-4 text-lg font-semibold leading-7 text-white sm:px-6 lg:px-8">
           Transactions List for the connected wallet
