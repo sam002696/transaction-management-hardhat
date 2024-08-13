@@ -7,7 +7,7 @@ import walletIcon from "../../images/wallet.png";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Transactions", href: "/transaction" },
+  { name: "Transfer token", href: "/transaction" },
   //   { name: "Docs", href: "#" },
   //   { name: "Company", href: "#" },
 ];

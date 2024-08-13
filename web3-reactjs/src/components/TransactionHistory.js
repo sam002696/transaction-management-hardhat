@@ -3,6 +3,8 @@ import { AuthUser } from "../utils/AuthUser";
 import MyEtherscanProvider from "../utils/MyEtherscanProvider";
 import { ethers } from "ethers";
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
+import ToastAlert from "../notification/alert/ToastAlert";
 
 const statuses = {
   1: "text-green-400 bg-green-400/10",
@@ -15,19 +17,30 @@ function classNames(...classes) {
 
 export default function TransactionHistory() {
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const loadTransactions = async () => {
-    const myEtherScanInstance = new MyEtherscanProvider(
-      "sepolia",
-      "3F3C3WXW84FFPQNJ1AJBSSS7T48AXIFS1I"
-    );
-    myEtherScanInstance
-      .getHistory(AuthUser.getUserWalletAddress())
-      .then(setTransactions)
-      .catch(console.error);
+  const viewTransactions = async () => {
+    try {
+      setLoading(true);
+
+      const myEtherScanInstance = new MyEtherscanProvider(
+        "sepolia",
+        "3F3C3WXW84FFPQNJ1AJBSSS7T48AXIFS1I"
+      );
+
+      const transactions = await myEtherScanInstance.getHistory(
+        AuthUser.getUserWalletAddress()
+      );
+
+      setTransactions(transactions);
+    } catch (error) {
+      setLoading(false);
+      // console.error(error.message);
+      ToastAlert("error", error.message);
+    } finally {
+      setLoading(false);
+    }
   };
-
-  console.log("transactions :>> ", transactions);
 
   return (
     <div className="bg-gray-900 py-10">
@@ -36,11 +49,15 @@ export default function TransactionHistory() {
           Transactions List for the connected wallet
         </h2>
         <button
-          onClick={loadTransactions}
+          onClick={viewTransactions}
           type="button"
           className="rounded-md bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-white/20 sm:px-6 lg:px-8 mr-4"
         >
-          Load Transactions
+          {loading
+            ? "Loading Transactions..."
+            : transactions.length > 0
+            ? "Reload Transactions"
+            : "View Transactions"}
         </button>
       </div>
 
@@ -115,14 +132,20 @@ export default function TransactionHistory() {
                 .sort((a, b) => b.timeStamp - a.timeStamp)
                 .map((transaction) => (
                   <tr key={transaction.hash}>
-                    <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
-                      <div className="flex items-center gap-x-4">
-                        <div className="truncate text-sm font-medium leading-6 text-white">
-                          {transaction.hash && transaction.hash.substring(0, 4)}
-                          ...{transaction.hash.substring(56)}
+                    <a
+                      href={`https://sepolia.etherscan.io/tx/${transaction.hash}`}
+                      target="_blank"
+                    >
+                      <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
+                        <div className="flex items-center gap-x-4">
+                          <div className="truncate text-sm font-medium leading-6 text-white underline underline-offset-4">
+                            {transaction.hash &&
+                              transaction.hash.substring(0, 4)}
+                            ...{transaction.hash.substring(56)}
+                          </div>
                         </div>
-                      </div>
-                    </td>
+                      </td>
+                    </a>
                     <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
                       {transaction.from && transaction.from.substring(0, 6)}...
                       {transaction.from.substring(34)}
@@ -212,8 +235,9 @@ export default function TransactionHistory() {
               </div>
               <div className="ml-3 flex-1 md:flex md:justify-between">
                 <p className="text-sm text-white font-medium">
-                  Please click on the Load Transactions Button to see the
-                  Transactions List
+                  Please click on the above 'View Transactions' Button to see
+                  the Transactions History Data of your connected wallet
+                  account.
                 </p>
                 {/* <p className="mt-3 text-sm md:ml-6 md:mt-0">
                 <a href="#" className="whitespace-nowrap font-medium text-blue-700 hover:text-blue-600">
