@@ -86,12 +86,28 @@ const TokenRequest = () => {
           <div className="relative isolate px-6 py-24 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-xl lg:max-w-4xl">
               <h2 className="text-5xl font-bold tracking-tight text-white">
-                EATL Token delivered straight to your wallet.
+                EATL Token delivered straight to your wallet address.
               </h2>
               <p className="mt-2 text-lg leading-8 text-gray-100">
-                Fast and reliable ERC20 Standard Token. 50 EATL/request.
+                Fast and reliable ERC20 Standard Token. You will receive 50 EATL/request completely free.
               </p>
-              <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
+              <div className="rounded-md bg-yellow-50 p-4 mt-8 mx-auto max-w-6xl opacity-70">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <InformationCircleIcon aria-hidden="true" className="h-5 w-5 text-yellow-400" />
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="text-sm font-medium text-yellow-800">Token Address : 0x280020Fdc5B692BD889544Ad66E3dC47786D0D26</h3>
+                    <div className="mt-2 text-sm text-yellow-700">
+                      <p>
+                      Import EATL Token to your Crypto Wallet form this above token contract Address.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
                 <div className="lg:flex-auto">
                   <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-1">
                     <div>
@@ -99,7 +115,7 @@ const TokenRequest = () => {
                         htmlFor="wallet_address"
                         className="block text-lg font-semibold leading-6 text-gray-100"
                       >
-                        My Wallet Address
+                        My Connected Wallet Address
                       </label>
                       <div className="mt-2.5">
                         <input
@@ -113,7 +129,7 @@ const TokenRequest = () => {
                         />
                       </div>
                     </div>
-                    <div className="mt-8">
+                    <div className="mt-2">
                       <button
                         disabled={loading}
                         onClick={getEATLHandler}
