@@ -16,11 +16,12 @@ const TokenRequest = () => {
     if (window.ethereum) {
       const web3Provider = new ethers.BrowserProvider(window.ethereum);
       setProvider(web3Provider);
-    } else {
-      alert(
-        "MetaMask is required to use this application. Please install MetaMask."
-      );
     }
+    // else {
+    //   alert(
+    //     "MetaMask is required to use this application. Please install MetaMask."
+    //   );
+    // }
   }, []);
 
   const getARISPAYHandler = async () => {
@@ -72,7 +73,7 @@ const TokenRequest = () => {
           <img
             alt=""
             src={ethTokenRequest}
-            className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40"
+            className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
           />
           <div
             aria-hidden="true"
@@ -106,12 +107,12 @@ const TokenRequest = () => {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-sm font-medium text-yellow-800">
-                      Token Address : 0x280020Fdc5B692BD889544Ad66E3dC47786D0D26
+                      Token Address : 0x8E2fC77A7cc7A3d3A8Bb006aaE655475Fd171Ac0
                     </h3>
                     <div className="mt-2 text-sm text-yellow-700">
                       <p>
-                        Import ARISPAY Token to your Crypto Wallet form this above
-                        token contract Address.
+                        Import ARISPAY Token to your Crypto Wallet form this
+                        above token contract Address.
                       </p>
                     </div>
                   </div>
@@ -172,7 +173,8 @@ const TokenRequest = () => {
                               </p>
                               <p className="mt-3 text-sm md:ml-6 md:mt-0">
                                 <a
-                                  href="#"
+                                  href={`https://sepolia.etherscan.io/tx/${transactionData}`}
+                                  target="_blank"
                                   className="whitespace-nowrap font-medium text-blue-700 hover:text-blue-600"
                                 >
                                   Details

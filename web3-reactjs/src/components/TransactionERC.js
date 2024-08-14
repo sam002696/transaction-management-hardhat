@@ -17,11 +17,16 @@ export default function TransactionERC() {
     if (window.ethereum) {
       const web3Provider = new ethers.BrowserProvider(window.ethereum);
       setProvider(web3Provider);
-    } else {
-      alert(
-        "MetaMask is required to use this application. Please install MetaMask."
-      );
     }
+    // else {
+    //   // alert(
+    //   //   "MetaMask is required to use this application. Please install MetaMask."
+    //   // );
+    //   ToastAlert(
+    //     "error",
+    //     "MetaMask is required to use this application. Please install MetaMask."
+    //   );
+    // }
   }, []);
 
   const [walletAddress, setWalletAddress] = useState("");
@@ -29,6 +34,13 @@ export default function TransactionERC() {
   const [loading, setLoading] = useState(false);
 
   const sendTransaction = async () => {
+    if (walletAddress === "") {
+      ToastAlert("info", "Receiver's Wallet Address is empty!");
+      return;
+    } else if (amount === "") {
+      ToastAlert("info", "Token Amount is empty!");
+      return;
+    }
     setLoading(true);
     console.log("walletAddress :>> ", walletAddress);
     console.log("amount :>> ", amount);
@@ -37,7 +49,11 @@ export default function TransactionERC() {
       const signer = await provider.getSigner();
 
       // Replace with your token's contract address
-      const tokenAddress = "0x280020Fdc5B692BD889544Ad66E3dC47786D0D26";
+      // (EATL)
+      // const tokenAddress = "0x280020Fdc5B692BD889544Ad66E3dC47786D0D26";
+
+      // ARIS PAY
+      const tokenAddress = "0x8E2fC77A7cc7A3d3A8Bb006aaE655475Fd171Ac0";
 
       // Create a contract instance
       const tokenContract = new ethers.Contract(
@@ -163,10 +179,10 @@ export default function TransactionERC() {
                     </div>
                     <div className="mt-8">
                       <button
-                        disabled={loading}
+                        disabled={loading || !provider}
                         onClick={sendTransaction}
                         type="submit"
-                        className="block w-full rounded-lg bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 opacity-90 shadow-indigo-500/50"
+                        className="block w-full rounded-lg bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 opacity-90 shadow-indigo-500/50 disabled:cursor-not-allowed disabled:bg-gray-500"
                       >
                         {loading
                           ? "Sending your tokens. Please wait..."

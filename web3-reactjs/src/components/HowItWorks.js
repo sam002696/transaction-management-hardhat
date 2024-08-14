@@ -7,7 +7,7 @@ import {
 
 const HowItWorks = () => {
   return (
-    <div className="sm:py-20">
+    <div className="sm:py-20 bg-gradient-to-r from-violet-100 to-violet-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="px-6 lg:px-8">
           <div className="mx-auto text-base leading-7 text-gray-700">
@@ -15,7 +15,8 @@ const HowItWorks = () => {
               Introducing
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              New ARISPAY Token Launch & Crypto Token Transaction Management DApp
+              New ARISPAY Token Launch & Crypto Token Transaction Management
+              DApp
             </h1>
             <h1 className="mt-7 text-xl font-semibold tracking-tight text-gray-900 sm:text-xl">
               Introduction
@@ -149,9 +150,9 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              Creating the ARISPAY Token was a critical step that required precise
-              coding and rigorous testing to ensure its functionality and
-              security.
+              Creating the ARISPAY Token was a critical step that required
+              precise coding and rigorous testing to ensure its functionality
+              and security.
             </p>
 
             <ul role="list" className="mt-8 max-w-xl space-y-8 text-gray-600">
@@ -164,13 +165,13 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Smart Contract Development:
                   </strong>{" "}
-                  The development of the ARISPAY Token smart contract was executed
-                  using Solidity, a high-level programming language tailored for
-                  Ethereum. We utilized the Remix IDE, an online platform that
-                  offers powerful tools for writing, testing, and debugging
-                  Solidity code. The ERC20 standard provided a solid foundation,
-                  outlining essential functions such as total supply, balance
-                  queries, and token transfers.
+                  The development of the ARISPAY Token smart contract was
+                  executed using Solidity, a high-level programming language
+                  tailored for Ethereum. We utilized the Remix IDE, an online
+                  platform that offers powerful tools for writing, testing, and
+                  debugging Solidity code. The ERC20 standard provided a solid
+                  foundation, outlining essential functions such as total
+                  supply, balance queries, and token transfers.
                 </span>
               </li>
               <li className="flex gap-x-3">
@@ -214,11 +215,11 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              To encourage participation and facilitate the distribution of ARISPAY
-              Tokens, we developed a faucet—a tool that allows users to request
-              and receive tokens freely. The faucet serves as a reserve from
-              which ARISPAY Tokens can be distributed to users, making it an
-              essential component of our DApp.
+              To encourage participation and facilitate the distribution of
+              ARISPAY Tokens, we developed a faucet—a tool that allows users to
+              request and receive tokens freely. The faucet serves as a reserve
+              from which ARISPAY Tokens can be distributed to users, making it
+              an essential component of our DApp.
             </p>
 
             <h1 className="mt-7 text-xl font-semibold tracking-tight text-gray-900 sm:text-xl">
@@ -237,11 +238,12 @@ const HowItWorks = () => {
                   </strong>{" "}
                   The faucet's functionality was encapsulated in a dedicated
                   smart contract. This contract managed the storage and
-                  distribution of ARISPAY Tokens, ensuring that users could request
-                  tokens securely and efficiently. For this phase, we employed
-                  Hardhat, a versatile development environment specifically
-                  designed for Ethereum. Hardhat enabled us to compile, deploy,
-                  and test the faucet smart contract on the Sepolia Testnet.
+                  distribution of ARISPAY Tokens, ensuring that users could
+                  request tokens securely and efficiently. For this phase, we
+                  employed Hardhat, a versatile development environment
+                  specifically designed for Ethereum. Hardhat enabled us to
+                  compile, deploy, and test the faucet smart contract on the
+                  Sepolia Testnet.
                 </span>
               </li>
               <li className="flex gap-x-3">
@@ -341,9 +343,10 @@ const HowItWorks = () => {
                     Functionality:
                   </strong>{" "}
                   The Token Transfer Interface is designed to facilitate the
-                  transfer of ARISPAY Tokens to any valid Ethereum wallet address.
-                  This feature is essential for users who want to send tokens to
-                  others or manage their holdings across different accounts.
+                  transfer of ARISPAY Tokens to any valid Ethereum wallet
+                  address. This feature is essential for users who want to send
+                  tokens to others or manage their holdings across different
+                  accounts.
                 </span>
               </li>
               <li className="flex gap-x-3">
@@ -357,9 +360,9 @@ const HowItWorks = () => {
                   </strong>{" "}
                   The interface also displays the transaction history of the
                   connected wallet, providing users with a comprehensive
-                  overview of their ARISPAY Token activities. This transparency is
-                  crucial for building trust and ensuring that users can track
-                  their transactions easily.
+                  overview of their ARISPAY Token activities. This transparency
+                  is crucial for building trust and ensuring that users can
+                  track their transactions easily.
                 </span>
               </li>
             </ul>
@@ -524,13 +527,13 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              The launch of the "New ARISPAY Token Launch & Transaction Management
-              DApp" marks a significant milestone for Ethics Advance Technology
-              Limited as we venture into the realm of blockchain technology.
-              This fully functional decentralized application is designed to
-              manage transactions with our custom ARISPAY Token, providing users
-              with a secure, user-friendly platform to explore the potential of
-              digital assets. <br /> <br />
+              The launch of the "New ARISPAY Token Launch & Transaction
+              Management DApp" marks a significant milestone for Ethics Advance
+              Technology Limited as we venture into the realm of blockchain
+              technology. This fully functional decentralized application is
+              designed to manage transactions with our custom ARISPAY Token,
+              providing users with a secure, user-friendly platform to explore
+              the potential of digital assets. <br /> <br />
               From the initial research and planning phase to the final
               deployment, every aspect of this project was carefully executed to
               ensure its success. Our DApp not only demonstrates our commitment

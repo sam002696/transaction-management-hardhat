@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { Link, useHistory } from "react-router-dom";
 import cryptoIcon from "../../images/crypto.png";
 import walletIcon from "../../images/wallet.png";
+import ToastAlert from "../../notification/alert/ToastAlert";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -42,6 +43,7 @@ export default function Header() {
     } else {
       /* MetaMask is not installed */
       console.log("Please install MetaMask");
+      ToastAlert("error", "Please install MetaMask");
     }
   };
 
@@ -98,9 +100,7 @@ export default function Header() {
       <nav aria-label="Top" className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex w-full items-center justify-between border-b border-indigo-500 py-2 lg:border-none">
           <div className="flex items-center">
-            <div className="text-white font-bold">
-              ARISPAY TOKEN
-            </div>
+            <div className="text-white font-bold">ARISPAY TOKEN</div>
             <a href="#">
               <span className="sr-only">ARISPAY</span>
               <img
@@ -155,7 +155,7 @@ export default function Header() {
             </button>
 
             <div className="">
-              <button className=" rounded-md border border-transparent bg-purple-800 px-3 py-2  text-white hover:bg-opacity-75 font-semibold flex flex-row items-center">
+              <button className=" rounded-md border border-transparent bg-purple-400 px-3 py-2  text-white hover:bg-opacity-75 font-semibold flex flex-row items-center bg-opacity-75">
                 <span className=" text-sm">SIGN IN</span>{" "}
               </button>
             </div>
