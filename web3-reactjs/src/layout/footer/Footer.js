@@ -1,4 +1,5 @@
 import ethIcon from "../../images/ethIcon.png";
+import ArisPayLogo from "../../images/ArisPayLogo.png";
 const navigation = {
   solutions: [
     { name: "Marketing", href: "#" },
@@ -95,14 +96,17 @@ export default function Footer() {
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-8 lg:px-16 lg:pt-16">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8">
-            <img alt="Company name" src={ethIcon} className="h-16 w-auto" />
+          <div className="space-y-6">
+            <div className="flex items-center">
+              <img alt="Company name" src={ArisPayLogo} className="h-16 w-auto" />
+              <div className="text-white font-bold">
+                ARISPAY TOKEN
+              </div>
+            </div>
             <p className="text-sm leading-6 text-gray-300">
-            Ethics Advanced Technology Limited (EATL) is a private company and a leading enterprise with innovative ICT services and solutions provider in Bangladesh established in November 1999.
-
-
+            Discover our upcoming suite of solutions, bridging traditional and digital currencies for secure, efficient transactions that empower users and businesses.
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
@@ -192,7 +196,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
+        <div className="mt-16 border-t border-white/10 pt-8 sm:mt-16 lg:mt-16">
           <p className="text-xs leading-5 text-gray-400">
             &copy; 2024 Ethics Advance Technology Limited (EATL). All rights reserved.
           </p>

@@ -23,7 +23,7 @@ const TokenRequest = () => {
     }
   }, []);
 
-  const getEATLHandler = async () => {
+  const getARISPAYHandler = async () => {
     if (!AuthUser.getUserWalletAddress()) {
       ToastAlert("warning", "Connect your wallet first!");
       return;
@@ -90,11 +90,11 @@ const TokenRequest = () => {
           <div className="relative isolate px-6 py-24 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-xl lg:max-w-4xl">
               <h2 className="text-5xl font-bold tracking-tight text-white">
-                EATL Token delivered straight to your wallet address.
+                ARISPAY Token delivered straight to your wallet address.
               </h2>
               <p className="mt-2 text-lg leading-8 text-gray-100">
                 Fast and reliable ERC20 Standard Token. You will receive 50
-                EATL/request completely free.
+                ARISPAY/request completely free.
               </p>
               <div className="rounded-md bg-yellow-50 p-4 mt-8 mx-auto max-w-6xl opacity-70">
                 <div className="flex">
@@ -110,7 +110,7 @@ const TokenRequest = () => {
                     </h3>
                     <div className="mt-2 text-sm text-yellow-700">
                       <p>
-                        Import EATL Token to your Crypto Wallet form this above
+                        Import ARISPAY Token to your Crypto Wallet form this above
                         token contract Address.
                       </p>
                     </div>
@@ -143,13 +143,13 @@ const TokenRequest = () => {
                     <div className="mt-2">
                       <button
                         disabled={loading}
-                        onClick={getEATLHandler}
+                        onClick={getARISPAYHandler}
                         type="submit"
                         className="block w-full rounded-lg bg-cyan-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white  hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600 disabled:bg-gray-400 disabled:cursor-not-allowed opacity-90 shadow-md shadow-emerald-500/40"
                       >
                         {loading
                           ? "Processing your tokens. Please wait..."
-                          : "GET 50 EATL TOKENS"}
+                          : "GET 50 ARISPAY TOKENS"}
                       </button>
                     </div>
 

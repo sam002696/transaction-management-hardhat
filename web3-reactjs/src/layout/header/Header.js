@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ethIcon from "../../images/ethIcon.png";
+import ARISPAYLogo from "../../images/ArisPayLogo.png";
 import { ethers } from "ethers";
 import { Link, useHistory } from "react-router-dom";
 import cryptoIcon from "../../images/crypto.png";
@@ -97,14 +98,14 @@ export default function Header() {
       <nav aria-label="Top" className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex w-full items-center justify-between border-b border-indigo-500 py-2 lg:border-none">
           <div className="flex items-center">
-            <div className="text-white font-bold mr-1">
-              EATL DApp
+            <div className="text-white font-bold">
+              ARISPAY TOKEN
             </div>
             <a href="#">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">ARISPAY</span>
               <img
                 alt=""
-                src={ethIcon}
+                src={ARISPAYLogo}
                 className="h-16 object-contain w-auto"
               />
             </a>
@@ -127,7 +128,7 @@ export default function Header() {
                 // to="/token-request"
                 className=" rounded-md border border-transparent bg-indigo-500 px-2 py-2  text-white hover:bg-opacity-75 font-semibold flex flex-row items-center"
               >
-                <span className="mr-2 text-sm">GET EATL TOKEN </span>{" "}
+                <span className="mr-2 text-sm">GET ARISPAY TOKEN </span>{" "}
                 <img
                   src={cryptoIcon}
                   alt=""

@@ -15,7 +15,7 @@ const HowItWorks = () => {
               Introducing
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              New EATL Token Launch & Crypto Token Transaction Management DApp
+              New ARISPAY Token Launch & Crypto Token Transaction Management DApp
             </h1>
             <h1 className="mt-7 text-xl font-semibold tracking-tight text-gray-900 sm:text-xl">
               Introduction
@@ -29,16 +29,16 @@ const HowItWorks = () => {
               business operations. Our latest endeavor is the development of a
               decentralized application (DApp) dedicated to managing crypto
               token transactions, marking our entry into the blockchain space.
-              This blog post provides an in-depth look at the "New EATL Token
+              This blog post provides an in-depth look at the "New ARISPAY Token
               Launch & Transaction Management DApp," which revolves around our
-              custom ERC20 token, EATL.
+              custom ERC20 token, ARISPAY.
             </p>
 
             <h1 className="mt-7 text-xl font-semibold tracking-tight text-gray-900 sm:text-xl">
               Project Overview
             </h1>
             <p className="mt-6 text-xl leading-8 text-justify">
-              The creation of the "New EATL Token Launch & Transaction
+              The creation of the "New ARISPAY Token Launch & Transaction
               Management DApp" was a multifaceted project that spanned several
               critical phases, from research and planning to the final
               deployment. Each phase played a vital role in ensuring the
@@ -68,7 +68,7 @@ const HowItWorks = () => {
             </p>
 
             <h1 className="mt-7 text-xl font-semibold tracking-tight text-gray-900 sm:text-xl">
-              Phase 2: EATL Token Creation
+              Phase 2: ARISPAY Token Creation
             </h1>
 
             <h1 className="mt-7 text-lg font-semibold tracking-tight text-gray-900 sm:text-lg">
@@ -76,8 +76,8 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              The centerpiece of our DApp is the EATL Token, which adheres to
-              the ERC20 standard. Here are the key specifications of the EATL
+              The centerpiece of our DApp is the ARISPAY Token, which adheres to
+              the ERC20 standard. Here are the key specifications of the ARISPAY
               Token:
             </p>
 
@@ -91,7 +91,7 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Token Name.
                   </strong>{" "}
-                  EATL Token
+                  ARISPAY Token
                 </span>
               </li>
               <li className="flex gap-x-3">
@@ -103,7 +103,7 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Token Symbol.
                   </strong>{" "}
-                  EATL
+                  ARISPAY
                 </span>
               </li>
               <li className="flex gap-x-3">
@@ -115,7 +115,7 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Initial Supply.
                   </strong>{" "}
-                  70 Million EATL
+                  70 Million ARISPAY
                 </span>
               </li>
               <li className="flex gap-x-3">
@@ -127,7 +127,7 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Maximum Supply (Cap).
                   </strong>{" "}
-                  100 Million EATL
+                  100 Million ARISPAY
                 </span>
               </li>
               <li className="flex gap-x-3">
@@ -139,7 +139,7 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Miner Reward.
                   </strong>{" "}
-                  50 EATL per transaction
+                  50 ARISPAY per transaction
                 </span>
               </li>
             </ul>
@@ -149,7 +149,7 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              Creating the EATL Token was a critical step that required precise
+              Creating the ARISPAY Token was a critical step that required precise
               coding and rigorous testing to ensure its functionality and
               security.
             </p>
@@ -164,7 +164,7 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Smart Contract Development:
                   </strong>{" "}
-                  The development of the EATL Token smart contract was executed
+                  The development of the ARISPAY Token smart contract was executed
                   using Solidity, a high-level programming language tailored for
                   Ethereum. We utilized the Remix IDE, an online platform that
                   offers powerful tools for writing, testing, and debugging
@@ -200,10 +200,10 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Token Installation:
                   </strong>{" "}
-                  Once deployed, the EATL Token was installed in the owner's
+                  Once deployed, the ARISPAY Token was installed in the owner's
                   MetaMask account, marking the successful creation and
                   initialization of our custom token. This installation ensured
-                  that the EATL Token was ready for use within our DApp and
+                  that the ARISPAY Token was ready for use within our DApp and
                   could be easily accessed by users.
                 </span>
               </li>
@@ -214,10 +214,10 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              To encourage participation and facilitate the distribution of EATL
+              To encourage participation and facilitate the distribution of ARISPAY
               Tokens, we developed a faucet—a tool that allows users to request
               and receive tokens freely. The faucet serves as a reserve from
-              which EATL Tokens can be distributed to users, making it an
+              which ARISPAY Tokens can be distributed to users, making it an
               essential component of our DApp.
             </p>
 
@@ -237,7 +237,7 @@ const HowItWorks = () => {
                   </strong>{" "}
                   The faucet's functionality was encapsulated in a dedicated
                   smart contract. This contract managed the storage and
-                  distribution of EATL Tokens, ensuring that users could request
+                  distribution of ARISPAY Tokens, ensuring that users could request
                   tokens securely and efficiently. For this phase, we employed
                   Hardhat, a versatile development environment specifically
                   designed for Ethereum. Hardhat enabled us to compile, deploy,
@@ -254,7 +254,7 @@ const HowItWorks = () => {
                     Deployment and Funding:
                   </strong>{" "}
                   After successfully deploying the faucet contract, the owner's
-                  account funded it with EATL Tokens. This funding process
+                  account funded it with ARISPAY Tokens. This funding process
                   involved transferring a portion of the token supply to the
                   faucet, ensuring that it was ready to distribute tokens to
                   users upon request.
@@ -284,7 +284,7 @@ const HowItWorks = () => {
 
             <p className="mt-6 text-xl leading-8 text-justify">
               The user interface (UI) of the DApp is a critical aspect that
-              defines how users interact with the EATL Token and manage their
+              defines how users interact with the ARISPAY Token and manage their
               transactions. Our goal was to create an intuitive and seamless UI
               that caters to both novice and experienced users.
             </p>
@@ -303,9 +303,9 @@ const HowItWorks = () => {
                   <strong className="font-semibold text-gray-900">
                     Functionality:
                   </strong>{" "}
-                  The Faucet UI allows users to request 50 EATL Tokens per
+                  The Faucet UI allows users to request 50 ARISPAY Tokens per
                   transaction. This feature is particularly useful for users who
-                  are new to the EATL Token ecosystem and want to explore its
+                  are new to the ARISPAY Token ecosystem and want to explore its
                   functionalities without any financial commitment.
                 </span>
               </li>
@@ -341,7 +341,7 @@ const HowItWorks = () => {
                     Functionality:
                   </strong>{" "}
                   The Token Transfer Interface is designed to facilitate the
-                  transfer of EATL Tokens to any valid Ethereum wallet address.
+                  transfer of ARISPAY Tokens to any valid Ethereum wallet address.
                   This feature is essential for users who want to send tokens to
                   others or manage their holdings across different accounts.
                 </span>
@@ -357,7 +357,7 @@ const HowItWorks = () => {
                   </strong>{" "}
                   The interface also displays the transaction history of the
                   connected wallet, providing users with a comprehensive
-                  overview of their EATL Token activities. This transparency is
+                  overview of their ARISPAY Token activities. This transparency is
                   crucial for building trust and ensuring that users can track
                   their transactions easily.
                 </span>
@@ -392,7 +392,7 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              The successful development of the "New EATL Token Launch &
+              The successful development of the "New ARISPAY Token Launch &
               Transaction Management DApp" was made possible by the use of
               several cutting-edge tools and technologies. Each tool played a
               vital role in different aspects of the project:
@@ -469,7 +469,7 @@ const HowItWorks = () => {
                     Solidity:
                   </strong>{" "}
                   The programming language used to write the smart contracts for
-                  the EATL Token and faucet. Solidity's versatility and
+                  the ARISPAY Token and faucet. Solidity's versatility and
                   robustness made it the ideal choice for our blockchain
                   development needs.
                 </span>
@@ -524,11 +524,11 @@ const HowItWorks = () => {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-justify">
-              The launch of the "New EATL Token Launch & Transaction Management
+              The launch of the "New ARISPAY Token Launch & Transaction Management
               DApp" marks a significant milestone for Ethics Advance Technology
               Limited as we venture into the realm of blockchain technology.
               This fully functional decentralized application is designed to
-              manage transactions with our custom EATL Token, providing users
+              manage transactions with our custom ARISPAY Token, providing users
               with a secure, user-friendly platform to explore the potential of
               digital assets. <br /> <br />
               From the initial research and planning phase to the final

@@ -61,7 +61,7 @@ export default function TransactionERC() {
       console.log(tx);
       if (tx.status === 1) {
         setLoading(false);
-        ToastAlert("success", "EATL Token Transfer Successful!");
+        ToastAlert("success", "ARISPAY Token Transfer Successful!");
         // setTransactionData(resp.hash);
       } else {
         setLoading(false);
@@ -112,7 +112,7 @@ export default function TransactionERC() {
           <div className="relative isolate px-6 py-24 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-xl lg:max-w-4xl">
               <h2 className="text-5xl font-bold tracking-tight text-white">
-                Let’s transact ERC20 Standard EATL Token
+                Let’s transact ERC20 Standard ARISPAY Token
               </h2>
               <p className="mt-2 text-lg leading-8 text-gray-100">
                 Experience a clean and straightforward interface that simplifies
@@ -154,7 +154,7 @@ export default function TransactionERC() {
                           id="amount"
                           name="amount"
                           type="number"
-                          placeholder="10 EATL TOKEN"
+                          placeholder="10 ARISPAY TOKEN"
                           value={amount}
                           onChange={(e) => setAmount(e.target.value)}
                           className="block w-full rounded-lg border-0 px-3.5 py-2 shadow-md ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-indigo-200 opacity-70 placeholder:text-gray-700 text-gray-700 shadow-indigo-500/50 font-semibold"
@@ -177,7 +177,7 @@ export default function TransactionERC() {
 
                   <p className="mt-4 text-sm leading-6 text-gray-500">
                     By submitting this form, I agree to the transfer policy of
-                    EATL Token (ERC20 Standard) .
+                    ARISPAY Token (ERC20 Standard) .
                   </p>
                 </div>
               </div>
