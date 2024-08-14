@@ -2,13 +2,12 @@ import React from "react";
 import howitworks from "../images/howitworks.png";
 import {
   CheckCircleIcon,
-  InformationCircleIcon,
 } from "@heroicons/react/20/solid";
 
 const HowItWorks = () => {
   return (
     <div className="sm:py-20 bg-gradient-to-r from-violet-100 to-violet-50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="px-6 lg:px-8">
           <div className="mx-auto text-base leading-7 text-gray-700">
             <p className="text-base font-semibold leading-7 text-indigo-600">
