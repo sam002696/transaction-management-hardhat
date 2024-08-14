@@ -100,8 +100,9 @@ export default function Footer() {
           <div className="space-y-8">
             <img alt="Company name" src={ethIcon} className="h-16 w-auto" />
             <p className="text-sm leading-6 text-gray-300">
-              Making the world a better place through constructing elegant
-              hierarchies.
+            Ethics Advanced Technology Limited (EATL) is a private company and a leading enterprise with innovative ICT services and solutions provider in Bangladesh established in November 1999.
+
+
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
@@ -193,7 +194,7 @@ export default function Footer() {
         </div>
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
           <p className="text-xs leading-5 text-gray-400">
-            &copy; 2024 EATL, Inc. All rights reserved.
+            &copy; 2024 Ethics Advance Technology Limited (EATL). All rights reserved.
           </p>
         </div>
       </div>
